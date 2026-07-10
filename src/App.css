@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Aristotelica';
+  src: url('./assets/fonts/aristotelica-regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Aristotelica Extralight';
+  src: url('./assets/fonts/aristotelica-extralight.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Aristotelica Demibold';
+  src: url('./assets/fonts/aristotelica-demibold.ttf') format('truetype');
+}
+
+@theme {
+  --font-arist: 'Aristotelica', sans-serif;
+  --font-arist-light: 'Aristotelica Extralight', sans-serif;
+  --font-arist-bold: 'Aristotelica Demibold', sans-serif;
+}
+
+html {background-color: rgba(0, 0, 0, 0.17)}
