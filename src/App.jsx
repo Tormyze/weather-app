@@ -8,19 +8,55 @@ import { useState } from "react";
 
 function App() {
   const [showingBar, setShowingBar] = useState(false);
+  const [notFound, setNotFound] = useState(false);
   const [active, setActive] = useState(false);
+
   const [data, setData] = useState(null);
+  const apiKey = import.meta.env.VITE_WEATHER_API_KEY || "";
 
   const handleSearch = async (e) => {
-    const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${e.target.value}&appid=27479e348a29a9ac81c0fdbb56e43af9`,
-    );
-    const data = await response.json();
-    setActive(true);
-    setData(data);
+    const city = e.target.value.trim();
 
-    e.target.value = "";
-    console.log(data);
+    if (!city) {
+      setNotFound(true);
+      setActive(false);
+      setData(null);
+      return;
+    }
+
+    if (!apiKey) {
+      console.error("VITE_WEATHER_API_KEY is not set");
+      setNotFound(true);
+      setActive(false);
+      setData(null);
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`,
+      );
+      const cityInfo = await response.json();
+
+      if (!response.ok) {
+        console.error("API error:", cityInfo);
+        setNotFound(true);
+        setActive(false);
+        setData(null);
+      } else {
+        setNotFound(false);
+        setActive(true);
+        setData(cityInfo);
+        console.log(cityInfo);
+      }
+    } catch (err) {
+      console.error("Network error:", err);
+      setNotFound(true);
+      setActive(false);
+      setData(null);
+    } finally {
+      e.target.value = "";
+    }
   };
 
   // Themes
@@ -81,10 +117,19 @@ function App() {
               Search
             </SearchBtn>
           ) : (
-            <SearchBar
-              className="w-4/5 xs:w-3/5 md:w-3/7"
-              onKeyDown={(e) => e.key === "Enter" && handleSearch(e)}
-            />
+            <>
+              <SearchBar
+                className="w-4/5 xs:w-3/5 md:w-3/7"
+                onKeyDown={(e) => e.key === "Enter" && handleSearch(e)}
+              />
+
+              {notFound && showingBar && (
+                <p
+                  className="font-arist text-md text-white
+                  text-shadow-2xs text-shadow-red-900
+                  -mt-4 px-2 bg-red-500 rounded-2xl">City not found!</p>
+              )}
+            </>
           )}
         </div>
 
@@ -116,11 +161,7 @@ function App() {
             </Card>
 
             <Card className="md:order-0">
-              <img
-                src={theme.img}
-                alt="Weather Icon"
-                className="w-28 h-28"
-              />
+              <img src={theme.img} alt="Weather Icon" className="w-28 h-28" />
               <p className="text-base text-slate-700">
                 {data.weather?.[0]?.description
                   ?.split(" ")
