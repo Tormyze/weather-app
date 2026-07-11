@@ -23,7 +23,4 @@
   --breakpoint-xs: 34rem;
 }
 
-html {
-  background-color: rgba(0, 0, 0, 0.17);
-  scrollbar-width: none;
-}
+html {scrollbar-width: none}
