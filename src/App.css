@@ -19,6 +19,11 @@
   --font-arist: 'Aristotelica', sans-serif;
   --font-arist-light: 'Aristotelica Extralight', sans-serif;
   --font-arist-bold: 'Aristotelica Demibold', sans-serif;
+
+  --breakpoint-xs: 34rem;
 }
 
-html {background-color: rgba(0, 0, 0, 0.17)}
+html {
+  background-color: rgba(0, 0, 0, 0.17);
+  scrollbar-width: none;
+}
