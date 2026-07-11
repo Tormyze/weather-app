@@ -17,18 +17,52 @@ function App() {
     const data = await response.json();
     setActive(true);
     setData(data);
+    
     console.log(data);
   };
 
+  // Themes
+  const currentWeather = {
+    Clouds: {
+      color: "text-slate-700",
+      img: "src/assets/icons/cloudy.png",
+      gradient: "from-slate-400 to-slate-200"},
+    Rain: {
+      color: "text-blue-500",
+      img: "src/assets/icons/rainy.png",
+      gradient: "from-blue-400 to-blue-200"},
+    Drizzle: {
+      color: "text-blue-500",
+      img: "src/assets/icons/drizzle.png",
+      gradient: "from-blue-400 to-blue-200"},
+    Thunderstorm: {
+      color: "text-blue-500",
+      img: "src/assets/icons/rainy.png",
+      gradient: "from-blue-400 to-blue-200"},
+    Snow: {
+      color: "text-cyan-500",
+      img: "src/assets/icons/snowy.png",
+      gradient: "from-cyan-400 to-cyan-200"},
+    Atmosphere: {
+      color: "text-slate-700",
+      img: "src/assets/icons/mist.png",
+      gradient: "from-slate-400 to-slate-200"},
+    default: {
+      color: "text-sky-500",
+      img: "src/assets/icons/sun.png",
+      gradient: "from-sky-300 to-sky-100 shadow-md shadow-sky-800"
+    }
+  }; const theme = currentWeather[data?.weather?.[0]?.main] || currentWeather.default;
+
   return (
-    <main className="w-screen h-screen bg-[url('weather-bg.jpg')] bg-cover bg-center bg-no-repeat bg-fixed flex flex-col justify-start items-center py-4">
-      <div className="w-full h-full flex flex-col justify-center items-center gap-2">
+    <main className={`w-screen h-screen bg-[url('weather-bg.jpg')] bg-cover bg-center bg-no-repeat bg-fixed flex flex-col justify-center items-center ${active && 'py-20 gap-10'}`}>
+      <div className="w-full flex flex-col justify-center items-center gap-2">
         <h1 className="text-5xl font-arist-light tracking-wider font-bold text-white text-center px-12 animate-bounce text-shadow-sm text-shadow-sky-800 hover:cursor-default">
           How's the sky today?
         </h1>
         {!showingBar ? (
           <SearchBtn
-            className="text-3xl font-bold text-sky-500 shadow-md shadow-blue-300 font-arist-light hover:scale-105 hover:cursor-pointer transition duration-50"
+            className="text-3xl font-bold text-sky-500 shadow-md shadow-blue-300 font-arist-light hover:scale-105 hover:cursor-pointer transition duration-50 mt-2"
             onClick={() => setShowingBar(true)}
           >
             Search
@@ -41,7 +75,8 @@ function App() {
       {active && data && (
         <Forecast className="shadow-md shadow-black grid grid-cols-3 gap-2 rounded-lg p-4">
           <Card>
-            <img src="src\assets\icons\sun.png" alt="Sunny" className="w-28 h-28 animate-spin" style={{ animationDuration: "10s" }} />
+            <img src={theme.img} alt="Weather Icon"
+            className="w-28 h-28" />
             <p className="text-lg text-slate-700">
               {data.weather?.[0]?.description
                 ?.split(" ")
@@ -49,15 +84,17 @@ function App() {
                 .join(" ")}
             </p>
           </Card>
-          <Card className="bg-linear-to-b from-sky-300 to-sky-100 shadow-md shadow-sky-800">
-            <SearchBtn className="flex justify-center items-center shadow-md font-bold text-3xl text-sky-500">
+
+          <Card className={`bg-linear-to-b ${theme.gradient} gap-4`}>
+            <SearchBtn className={`flex justify-center items-center shadow-md font-bold text-3xl ${theme.color}`}>
               {Math.round(data.main?.temp - 273.15)} Cº
             </SearchBtn>
             <div className="flex flex-col justify-center items-center">
-              <p className="text-3xl font-arist">
-                {data.name}, {data.sys?.country}
-              </p>
+              <h2 className="text-3xl font-arist text-slate-800 leading-6">
+                {data.name} <span className="text-lg text-slate-800">({data.sys?.country})</span>
+              </h2>
               <p className="text-lg text-slate-700">
+                {/* <img src={`https://openweathermap.org/img/wn/${data.weather?.[0]?.icon}.png`} alt="Weather Icon" className="w-6 h-6 inline-block ml-2" /> */}
                 {data.weather?.[0]?.main}
               </p>
               <p className="text-base text-slate-600">
@@ -65,10 +102,11 @@ function App() {
               </p>
             </div>
           </Card>
+
           <Card className="gap-8">
             {/* data.coord.lat */}
             <div className="flex flex-col justify-center items-center gap-1">
-              <h3 className="text-2xl font-arist text-sky-500">Coordinates</h3>
+              <h3 className={`text-2xl font-arist ${theme.color}`}>Coordinates</h3>
               <ul className="flex flex-col justify-center items-center">
                 <li className="text-lg text-slate-700">
                   Latitude: {data.coord?.lat}
@@ -81,7 +119,7 @@ function App() {
 
             {/* data.coord.lon */}
             <div className="flex flex-col justify-center items-center gap-1">
-              <h3 className="text-2xl font-arist text-sky-500">Wind</h3>
+              <h3 className={`text-2xl font-arist ${theme.color}`}>Wind</h3>
               <ul className="flex flex-col justify-center items-center">
                 <li className="text-lg text-slate-700">
                   Speed: {data.wind?.speed} m/s
