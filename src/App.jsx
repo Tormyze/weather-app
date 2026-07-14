@@ -111,7 +111,7 @@ function App() {
   return (
     <div className="min-h-screen flex flex-col">
       <main
-        className={`bg-[url('weather-bg.jpg')] bg-cover bg-center bg-no-repeat bg-fixed flex flex-col flex-1 justify-center items-center px-4 py-8 overflow-y-auto ${active && "gap-6"}`}
+        className={`bg-[url('/weather-bg.jpg')] bg-cover bg-center bg-no-repeat bg-fixed flex flex-col flex-1 justify-center items-center px-4 py-8 overflow-y-auto ${active && "gap-6"}`}
       >
         <div className="w-full flex flex-col justify-center items-center gap-2">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-arist-light tracking-wider font-bold text-white text-center px-4 animate-bounce text-shadow-sm text-shadow-sky-800 hover:cursor-default">
