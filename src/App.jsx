@@ -6,6 +6,14 @@ import Card from "./components/Card";
 import Footer from "./layouts/Footer";
 import { useState } from "react";
 
+// Icons
+import sunnyIcon from "./assets/icons/sun.png";
+import cloudyIcon from "./assets/icons/cloudy.png";
+import rainyIcon from "./assets/icons/rainy.png";
+import drizzleIcon from "./assets/icons/drizzle.png";
+import snowyIcon from "./assets/icons/snowy.png";
+import mistyIcon from "./assets/icons/mist.png";
+
 function App() {
   const [showingBar, setShowingBar] = useState(false);
   const [notFound, setNotFound] = useState(false);
@@ -63,37 +71,37 @@ function App() {
   const currentWeather = {
     Clouds: {
       color: "text-slate-700",
-      img: "src/assets/icons/cloudy.png",
+      img: cloudyIcon,
       gradient: "from-slate-400 to-slate-200",
     },
     Rain: {
       color: "text-blue-500",
-      img: "src/assets/icons/rainy.png",
+      img: rainyIcon,
       gradient: "from-blue-400 to-blue-200",
     },
     Drizzle: {
       color: "text-blue-500",
-      img: "src/assets/icons/drizzle.png",
+      img: drizzleIcon,
       gradient: "from-blue-400 to-blue-200",
     },
     Thunderstorm: {
       color: "text-blue-500",
-      img: "src/assets/icons/rainy.png",
+      img: rainyIcon,
       gradient: "from-blue-400 to-blue-200",
     },
     Snow: {
       color: "text-cyan-500",
-      img: "src/assets/icons/snowy.png",
+      img: snowyIcon,
       gradient: "from-cyan-400 to-cyan-200",
     },
     Atmosphere: {
       color: "text-slate-700",
-      img: "src/assets/icons/mist.png",
+      img: mistyIcon,
       gradient: "from-slate-400 to-slate-200",
     },
     default: {
       color: "text-sky-500",
-      img: "src/assets/icons/sun.png",
+      img: sunnyIcon,
       gradient: "from-sky-300 to-sky-100 shadow-md shadow-sky-800",
     },
   };
@@ -127,7 +135,10 @@ function App() {
                 <p
                   className="font-arist text-md text-white
                   text-shadow-2xs text-shadow-red-900
-                  -mt-4 px-2 bg-red-500 rounded-2xl">City not found!</p>
+                  -mt-4 px-2 bg-red-500 rounded-2xl"
+                >
+                  City not found!
+                </p>
               )}
             </>
           )}
@@ -162,11 +173,8 @@ function App() {
 
             <Card className="md:order-0">
               <img src={theme.img} alt="Weather Icon" className="w-28 h-28" />
-              <p className="text-base text-slate-700">
-                {data.weather?.[0]?.description
-                  ?.split(" ")
-                  .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
-                  .join(" ")}
+              <p className="text-base text-slate-700 capitalize">
+                {data.weather?.[0]?.description}
               </p>
             </Card>
             <Card className="gap-8 md:order-2">
