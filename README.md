@@ -1,49 +1,51 @@
-# ⛅Weather App
+# ⛅ Weather App
 
-Projeto completo de um **aplicativo de previsão do tempo** moderno, simples e funcional.
+> 🔗 Documento em [Português BR](./README.pt-br.md)
+
+A complete, modern, simple, and functional **weather forecast application**.
 
 ![Thumb](https://github.com/user-attachments/assets/ae6e0661-d572-4662-8560-adc2ac609db2)
 
-🔗 Acesse o projeto online: [Weather App](https://weather-app-lake-nu-39.vercel.app)
+🔗 Access the live project: [Weather App](https://weather-app-lake-nu-39.vercel.app)
 
 ---
 
-## ☀️ Sobre o projeto
+## ☀️ About the Project
 
-O aplicativo de previsão do tempo permite descobrir o **clima** e mais diversas informações sobre **qualquer cidade** do mundo em tempo real, de forma prática e fluida.
-Desenvolvido com uma **interface limpa** e **design responsivo** (qualidade **UI/UX**), o sistema dispõe do consumo da **[OpenWeather API](https://openweathermap.org)** com **Fetch API** para sua base fundamental de dados, permitindo transferência completa de informações e uma **usabilidade** simples e dinâmica ao usuário.
+This weather forecast application allows users to check the **real-time weather** and additional climate details for **any city** in the world in a practical and seamless way.
+Developed with a **clean interface** and a **responsive design** focused on **UI/UX** quality, the system consumes the **[OpenWeather API](https://openweathermap.org)** using the **Fetch API** as its core data foundation. This ensures a complete information transfer and provides a simple, dynamic **usability** experience for the user.
 
-📆 É possível visualizar um dashboard com dados sobre:
-- **Temperatura** do local;
-- **Clima** em tempo real;
-- **Humidade** do ambiente;
-- **Coordenadas** com latitude e longitude;
-- Detalhes sobre a **direção** e **velocidade** do **vento**;
+📆 It features a dashboard displaying data on:
+- Local **temperature**;
+- Real-time **weather conditions**;
+- Ambient **humidity**;
+- **Coordinates** (latitude and longitude);
+- Details on **wind speed** and **direction**;
 
-## ♨️ Idealização
+## ♨️ Project Goals
 
-A origem do projeto se baseia no objetivo de praticar o **consumo de APIs RESTful**, através da **manipulação de dados JSON**, **tratamento de erros**, **renderização condicional** de componentes com o framework ⚛️React, uma moderna **estilização dinâmica** e **responsiva** com 🍃**Tailwind Css**, aplicação de **boas práticas** de Clean Code, **versionamento**, entre outros aspectos.
+The main goal of this project was to practice **consuming RESTful APIs** by **manipulating JSON data**, implementing **error handling**, and managing **conditional rendering** of components using the ⚛️ React framework. It also focused on a modern, **dynamic and responsive styling** with 🍃 **Tailwind CSS**, as well as applying Clean Code **best practices** and **version control**, among other aspects.
 
-## 🛠️ Tecnologias
+## 🛠️ Technologies
 
-**Linguagens** e **tecnologias** utilizadas na construção do projeto:
+**Languages** and **technologies** used to build this project:
 
-![React](https://img.shields.io/badge/Vite-black?logo=vite)
+![Vite](https://img.shields.io/badge/Vite-black?logo=vite)
 ![React](https://img.shields.io/badge/React-black?logo=react)
-![React](https://img.shields.io/badge/Javascript-black?logo=javascript)
-![React](https://img.shields.io/badge/TailwindCss-black?logo=tailwindcss)
-![React](https://img.shields.io/badge/Css3-black?&logo=css&logoColor=blue)
-![React](https://img.shields.io/badge/Html5-black?logo=html5)
-![React](https://img.shields.io/badge/Git-black?logo=git)
+![JavaScript](https://img.shields.io/badge/JavaScript-black?logo=javascript)
+![Tailwind](https://img.shields.io/badge/TailwindCSS-black?logo=tailwindcss)
+![Css](https://img.shields.io/badge/CSS3-black?&logo=css&logoColor=blue)
+![Html](https://img.shields.io/badge/HTML5-black?logo=html5)
+![Git](https://img.shields.io/badge/Git-black?logo=git)
 
 ## ✨ Features
 
-- [x] Pesquisa dinâmica para qualquer cidade do mundo;
-- [x] Dashboard simples e objetivo;
-- [x] Resultados de temperatura, clima e coordenadas;
-- [x] Animação de texto visual na interface para conforto;
-- [x] Responsividade em telas menores;
+- [x] Dynamic search for any city in the world;
+- [x] Simple and objective dashboard;
+- [x] Accurate temperature, weather condition, and coordinate results;
+- [x] Visual text animation on the interface for a smoother feel;
+- [x] Fully responsive layout for smaller screens;
 
 ---
 
-💻 Desenvolvido por Tormyze
+💻 Developed by Tormyze
